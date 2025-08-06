@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS = credentials('dckr_pat_dqD7Ssx8KVxU1qZCqKnYGb0b8C4')
+        DOCKERHUB_CREDENTIALS = credentials('dockerhub-cred')
         DOCKERHUB_USERNAME = 'yuvaraj3546'
         IMAGE_NAME = 'sample-node-app'
     }
@@ -19,6 +19,7 @@ pipeline {
                 sh 'docker build -t $DOCKERHUB_USERNAME/$IMAGE_NAME .'
             }
         }
+        
 
         stage('Login to DockerHub') {
             steps {
